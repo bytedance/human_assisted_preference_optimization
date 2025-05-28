@@ -1,0 +1,89 @@
+task_name: coffee_d0
+local_run_dir: ckpts
+exp_name: hapo_train_coffee_d0
+cache_dir: .cache
+seed: 1
+warmup_steps: 10
+cache_reference_logprobs: false
+lr: 5.0e-05
+correct_ratio: 0.5
+interaction_ratio: 0.25
+wandb:
+  enabled: true
+  entity: null
+  project: hapo
+minimum_log_interval_secs: 1.0
+use_lora: true
+batch_size: 8
+eval_batch_size: 8
+n_epochs: 50
+grad_accumulation_steps: 1
+save_steps: 500
+action_space: 7
+do_first_eval: false
+eval_every: 2000
+debug: false
+intermediate_checkpoints: true
+model:
+  name_or_path: ckpt/coffee_d0_300
+  base_path: /mnt/bn/xwk-robotlearning/.cache/huggingface/hub/models--openvla--openvla-7b/snapshots/31f090d05236101ebfc381b61c674dd4746d4ce0
+  tokenizer_name_or_path: null
+  load_from: null
+  from_checkpoint: null
+  block_name: LlamaDecoderLayer
+  policy_dtype: bfloat16
+  reference_dtype: bfloat16
+  max_grad_norm: 5.0
+  v_head_max_grad_norm: 0.1
+  max_length: 1024
+  max_prompt_length: 512
+  activation_checkpointing: true
+  batch_size: 8
+  gradient_accumulation_steps: 1
+  eval_batch_size: 8
+  attn_implementation: flash_attention_2
+  use_peft: true
+  load_lora_from: null
+  peft:
+    lora_r: 64
+    lora_alpha: 256
+    lora_dropout: 0.05
+    target_modules: all-linear
+  reward_model:
+    path: null
+    model_class: AutoModelForBradleyTerry
+    dtype: float32
+    attn_implementation: flash_attention_2
+loss:
+  beta: 0.1
+  trainer: HAPOTrainer
+  dataloader: UnpairedPreferenceDataLoader
+  desirable_weight: 1
+  undesirable_weight: 1.0
+  bc_weight: 1
+  kl_max: 5
+  kl_min: -5
+  token_distance: 1
+trainer:
+  _target_: trainer.ddp_robotic_trainer.HAPOTrainer
+dataset:
+  _target_: dataset.balance_hapo_dataset.BalanceHAPODataset
+  kwargs:
+    data_root_dir: robotic_data/mimicgen
+    interaction_root_dir: robotic_data/mimicgen_interaction_data/mimicgen_coffee_d0_interaction
+    data_name: mimicgen
+    data_list_names: coffee_d0.json
+    interaction_list_names: interaction_data_list.json
+    demo_number: 50
+    image_shape: 224
+    previous_K: 10
+eval_dataset:
+  _target_: dataset.eval_mimicgen.EvalMimicgen
+  kwargs:
+    data_root_dir: robotic_data/mimicgen
+    interaction_root_dir: robotic_data/mimicgen_interaction_data/mimicgen_coffee_d0_interaction
+    data_name: mimicgen
+    data_list_names: coffee_d0.json
+    interaction_list_names: interaction_data_list.json
+    demo_number: 0
+    image_shape: 224
