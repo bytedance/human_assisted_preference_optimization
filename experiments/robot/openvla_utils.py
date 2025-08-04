@@ -1,3 +1,7 @@
+
+ # Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ # SPDX-License-Identifier: MIT
+
 """Utils for evaluating the OpenVLA policy."""
 
 import json

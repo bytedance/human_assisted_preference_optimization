@@ -1,4 +1,5 @@
-
+ # Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ # SPDX-License-Identifier: MIT
 from transformers import AutoModelForVision2Seq, AutoProcessor, BitsAndBytesConfig
 from typing import Dict, List, Optional, Tuple
 import torch

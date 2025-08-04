@@ -1,3 +1,6 @@
+ # Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ # SPDX-License-Identifier: MIT
+
 import os
 from collections import deque
 from dataclasses import dataclass, asdict

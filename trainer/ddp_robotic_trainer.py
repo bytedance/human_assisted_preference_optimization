@@ -1,3 +1,6 @@
+ # Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ # SPDX-License-Identifier: MIT
+
 import torch
 torch.backends.cuda.matmul.allow_tf32 = True
 import torch.nn.functional as F

@@ -1,3 +1,6 @@
+ # Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ # SPDX-License-Identifier: MIT
+
 from accelerate import Accelerator, DistributedDataParallelKwargs
 from accelerate import PartialState
 import hydra

@@ -1,4 +1,5 @@
-
+ # Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ # SPDX-License-Identifier: MIT
 from torch.utils.data import Dataset, IterableDataset,DataLoader
 import pickle
 from pathlib import Path
