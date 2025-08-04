@@ -2,7 +2,7 @@
 # All rights reserved.
 #
 # This source code is licensed under the license found in the
-# LICENSE file in the root directory of this source tree.
+# LICENSE file is https://github.com/ContextualAI/HALOs/blob/main/LICENSE
 import os
 from datetime import datetime
 import torch
