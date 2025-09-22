@@ -1,4 +1,12 @@
-# Human-assisted Action Policy Optimization
+
+# [NeurIPS 2025] Human-assisted Action Policy Optimization
+
+[Project Page](https://xwinks.github.io/human_assisted_preference_optimization/) 
+
+[Arxiv](https://arxiv.org/abs/2506.07127)
+
+![HAPO](./pipeline.png)
+
 
 ## Introduction
 
@@ -67,3 +75,15 @@ In this work, we evaluate the performance of the HAPO model on the MimicGen data
 To evaluate the performance of the HAPO model, run the following command:
 ```bash
 bash scripts/inference.sh ${task_name} ${adapter_path}
+```
+
+## Citation
+
+```bibtex
+@article{xia2025robotic,
+  title={Robotic Policy Learning via Human-assisted Action Preference Optimization},
+  author={Xia, Wenke and Yang, Yichu and Wu, Hongtao and Ma, Xiao and Kong, Tao and Hu, Di},
+  journal={arXiv preprint arXiv:2506.07127},
+  year={2025}
+}
+```
